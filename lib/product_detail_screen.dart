@@ -21,7 +21,13 @@ class ProductDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             // Gambar produk
-            Image.network(
+            // Image.network(
+            //   productImage,
+            //   height: 300,
+            //   width: double.infinity,
+            //   fit: BoxFit.cover,
+            // ),
+            Image.asset(
               productImage,
               height: 300,
               width: double.infinity,
@@ -42,7 +48,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    '\{productPrice.toStringAsFixed(2)}',
+                    productPrice,
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.green,
