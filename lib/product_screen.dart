@@ -1,31 +1,39 @@
 import 'package:flutter/material.dart';
+// Pastikan untuk mengganti dengan import halaman detail produk
+import 'product_detail_screen.dart';
 
 class ProductScreen extends StatelessWidget {
   // List of products with image paths and names
-  final List<Map<String, String>> products = [
+  final List<Map<String, dynamic>> products = [
     {
       'name': 'Product 1',
       'image': 'assets/images/product1.png',
+      'price': 'Rp9.000.000',
     },
     {
       'name': 'Product 2',
       'image': 'assets/images/product2.png',
+      'price': 'Rp9.000.000',
     },
     {
       'name': 'Product 3',
       'image': 'assets/images/product3.png',
+      'price': 'Rp9.000.000',
     },
     {
       'name': 'Product 4',
       'image': 'assets/images/product4.png',
+      'price': 'Rp9.000.000',
     },
     {
       'name': 'Product 5',
       'image': 'assets/images/product5.png',
+      'price': 'Rp9.000.000',
     },
     {
       'name': 'Product 6',
       'image': 'assets/images/product6.png',
+      'price': 'Rp9.000.000',
     },
     // Add more products as needed
   ];
@@ -42,7 +50,6 @@ class ProductScreen extends StatelessWidget {
               Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-                color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -90,9 +97,24 @@ class ProductScreen extends StatelessWidget {
                     ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
-                      return ProductTile(
-                        name: products[index]['name']!,
-                        imagePath: products[index]['image']!,
+                      return GestureDetector(
+                        onTap: () {
+                          // Navigate to ProductDetailScreen on tap
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailScreen(
+                                productName: products[index]['name']!,
+                                productImage: products[index]['image']!,
+                                productPrice: products[index]['price']!,
+                              ),
+                            ),
+                          );
+                        },
+                        child: ProductTile(
+                          name: products[index]['name']!,
+                          imagePath: products[index]['image']!,
+                        ),
                       );
                     },
                   ),
